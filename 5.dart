@@ -21,7 +21,6 @@ class AddRemove {
 
   void Show_book_list() {
     bk.forEach((element) {
-      print(element);
       print("Title : '${element.title}' Author : ${element.author}");
     });
   }
