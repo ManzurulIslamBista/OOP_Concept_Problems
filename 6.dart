@@ -1,7 +1,7 @@
 class Employee {
   String name;
   String job_title;
-  int salary;
+  double salary;
 
   Employee({required this.name, required this.job_title, required this.salary});
 }
@@ -14,10 +14,18 @@ class CalUpdate {
     print("${employee.name} Added");
   }
 
-  void update_salary(String name, int salary) {
+  void update_salary(String name, double salary) {
     emp.forEach((employee) {
       if (employee.name == name) {
         employee.salary = salary;
+      }
+    });
+  }
+
+  void calculateSalary(String name, double sal) {
+    emp.forEach((employee) {
+      if (employee.name == name) {
+        employee.salary += (sal / 100) * employee.salary;
       }
     });
   }
@@ -32,10 +40,11 @@ class CalUpdate {
 
 void main() {
   Employee employee = Employee(
-      name: "Abid", job_title: "Junior Softwer Developer", salary: 2000000);
+      name: "Abid", job_title: "Junior Softwer Developer", salary: 20000);
   CalUpdate emp = CalUpdate();
   emp.add_employee(employee);
   emp.Show_employee_list();
-  emp.update_salary("Abid", 50000000);
+  emp.update_salary("Abid", 500000);
+  emp.calculateSalary("Abid", 15);
   emp.Show_employee_list();
 }

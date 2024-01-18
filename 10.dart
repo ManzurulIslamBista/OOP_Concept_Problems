@@ -1,40 +1,43 @@
 class Student {
   String name;
-  double grade;
-  List<Courses> course = [];
-  Student({required this.name, required this.grade});
+  int grade;
+  List<String> courses = [];
 
-  void add_course(Courses cou) {
-    course.add(cou);
-    print("'${cou.name}' courses added");
+  Student(this.name, this.grade);
+
+  void addCourse(String course) {
+    if (!courses.contains(course)) {
+      courses.add(course);
+      print("$name has added the course: $course");
+    } else {
+      print("$name is already enrolled in the course: $course");
+    }
   }
 
-  void remove_course(Courses cou) {
-    course.removeWhere((cours) => cou.name == cours.name);
+  void removeCourse(String course) {
+    if (courses.contains(course)) {
+      courses.remove(course);
+      print("$name has removed the course: $course");
+    } else {
+      print("$name is not enrolled in the course: $course");
+    }
   }
 
-  void Show_course_list() {
-    course.forEach((element) {
-      print("'${element.name}', ");
-    });
+  void displayDetails() {
+    print("\nStudent details:");
+    print("Name: $name");
+    print("Grade: $grade");
+    print("Enrolled Courses: ${courses.isEmpty ? 'None' : courses.join(', ')}");
   }
-}
-
-class Courses {
-  String name;
-  Courses(this.name);
 }
 
 void main() {
-  Courses cse1 = Courses("CSE101");
-  Courses cse2 = Courses("CSE102");
+  Student student1 = Student("Alice", 10);
+  student1.displayDetails();
 
-  Student abid = Student(name: "Md. Manzurul Islam", grade: 3.73);
-  abid.add_course(cse1);
-  abid.add_course(cse2);
-  print("Before Remove");
-  abid.Show_course_list();
-  print("After Remove");
-  abid.remove_course(cse1);
-  abid.Show_course_list();
+  student1.addCourse("Math");
+  student1.addCourse("Science");
+  student1.addCourse("Math");
+  student1.removeCourse("English");
+  student1.displayDetails();
 }

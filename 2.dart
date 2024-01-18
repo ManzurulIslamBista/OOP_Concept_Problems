@@ -1,18 +1,34 @@
 class Dog {
-  String? _name = "doggy";
-  String? _breed = "Hybrid";
+  String name = "doggy";
+  String breed = "Hybrid";
 
-  set name(String dog_name) => _name = dog_name;
-  set breed(String dog_breed) => _breed = dog_breed;
+  Dog(String name, String breed) {
+    this.name = name;
+    this.breed = breed;
+  }
 
-  get dog_details => "Name : $_name Breed : $_breed";
+  void setName(String newName) {
+    name = newName;
+  }
+
+  void setBreed(String newBreed) {
+    breed = newBreed;
+  }
+
+  String get dogDetails => "Name: $name, Breed: $breed";
 }
 
 void main() {
-  Dog bulldog = Dog();
-  print(bulldog.dog_details);
+  Dog dog1 = Dog("Buddy", "Labrador");
+  Dog dog2 = Dog("Max", "Golden Retriever");
 
-  bulldog._name = "Pappy";
-  bulldog._breed = "Mixbreed";
-  print(bulldog.dog_details);
+  print("Dog 1 - ${dog1.dogDetails}");
+  print("Dog 2 - ${dog2.dogDetails}");
+
+  dog1.setName("Charlie");
+  dog2.setBreed("Beagle");
+
+  print("\nUpdated values:");
+  print("Dog 1 - ${dog1.dogDetails}");
+  print("Dog 2 - ${dog2.dogDetails}");
 }

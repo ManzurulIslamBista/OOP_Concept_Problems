@@ -6,7 +6,7 @@ class Book {
   Book({required this.title, required this.author, required this.ISBN});
 }
 
-class AddRemove {
+class BookCollection {
   List<Book> bk = [];
 
   void add(Book addbook) {
@@ -30,7 +30,7 @@ void main() {
   Book obj = Book(title: "Story of a man", author: "ab9d", ISBN: "5847512");
   Book obj2 = Book(title: "Story of a man2", author: "ab9d", ISBN: "85478546");
 
-  AddRemove book = AddRemove();
+  BookCollection book = BookCollection();
   book.add(obj);
   book.add(obj2);
   book.remove("5847512");
